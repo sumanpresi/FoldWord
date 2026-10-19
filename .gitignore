@@ -1,0 +1,15 @@
+# Build output and local machine files
+build/
+.gradle/
+.idea/
+local.properties
+*.iml
+captures/
+
+# Never commit signing keys, passwords, or APKs
+*.apk
+*.aab
+*.jks
+*.keystore
+keystore.properties
+secrets.properties

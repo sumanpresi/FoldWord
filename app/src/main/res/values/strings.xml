@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fold Word</string>
+    <string name="tagline">Microsoft Word, built for your Galaxy Z Fold 8</string>
+    <string name="open_word">Open Word</string>
+    <string name="open_beta">Open inside Fold Word (beta)</string>
+    <string name="recent_title">Continue where you left off</string>
+    <string name="continue_label">Continue</string>
+    <string name="forget">Forget</string>
+    <string name="privacy_note">Sign-in, subscriptions and saving happen on Microsoft\'s own pages. Fold Word never sees or stores your Microsoft password.</string>
+    <string name="web_title">Word (beta)</string>
+    <string name="reload">Reload</string>
+    <string name="open_in_browser">Open in browser</string>
+    <string name="load_error">Couldn\'t load Word. Check your connection, then tap Reload. You can also use Open in browser.</string>
+    <string name="download_blob">This download can only be saved in the browser. Use Open in browser.</string>
+</resources>

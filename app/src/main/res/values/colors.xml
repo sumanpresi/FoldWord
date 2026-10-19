@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Microsoft Word blue, used for the brand panel and the app icon. -->
+    <color name="brand_blue">#FF2B579A</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="brand_tagline">#E6FFFFFF</color>
+</resources>

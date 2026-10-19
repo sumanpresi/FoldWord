@@ -1,0 +1,51 @@
+# Builds a DEBUG APK in the cloud. No signing secrets or credentials are needed.
+# Result: download "fold-word-debug-apk" from the run's Artifacts section.
+name: Build Fold Word APK
+
+on:
+  workflow_dispatch:          # Manual "Run workflow" button in the Actions tab
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read              # Least privilege: the build only reads the code
+
+jobs:
+  build-debug-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up the Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages (API 35)
+        run: |
+          yes | sdkmanager --licenses > /dev/null
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Set up Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Build the debug APK
+        run: gradle --no-daemon assembleDebug
+
+      - name: Upload the APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: fold-word-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 14

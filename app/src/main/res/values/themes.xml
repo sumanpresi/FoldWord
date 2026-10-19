@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FoldWord" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_blue</item>
+        <!-- Android 12+ launch (splash) screen -->
+        <item name="android:windowSplashScreenBackground">@color/brand_blue</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+    </style>
+</resources>

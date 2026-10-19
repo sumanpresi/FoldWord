@@ -125,7 +125,7 @@ class WordWebActivity : AppCompatActivity() {
 
         web.setDownloadListener { url, _, _, _, _ ->
             // Word's exports often use blob: links, which this WebView cannot save reliably.
-            if (Uri.parse(url).scheme == "https") openInBrowser(Uri.parse(url))
+            if (Uri.parse(url).scheme == "https") openInChromeApp(Uri.parse(url))
             else Toast.makeText(this, getString(R.string.download_blob), Toast.LENGTH_LONG).show()
         }
 
@@ -165,7 +165,8 @@ class WordWebActivity : AppCompatActivity() {
             true
         }
         R.id.action_browser -> {
-            openInBrowser(Uri.parse(web.url ?: Config.WORD_URL))
+            // Full Chrome app: has "Desktop site", which gives Word's full ribbon editor.
+            openInChromeApp(Uri.parse(web.url ?: Config.WORD_URL))
             true
         }
         else -> super.onOptionsItemSelected(item)

@@ -26,6 +26,7 @@ object Config {
 
     const val PREFS = "fold_word"
     const val KEY_RECENT = "recent_url"
+    const val KEY_RIBBON_TIP_DONE = "ribbon_tip_done"
 
     /** True when the host is an allowlisted one or a subdomain of one. */
     fun isAllowed(host: String?): Boolean {

@@ -4,7 +4,11 @@
     <string name="tagline">Microsoft Word, built for your Galaxy Z Fold 8</string>
 
     <string name="open_word">Open Word</string>
-    <string name="open_word_hint">Full Word editor in Chrome. Saves to OneDrive automatically.</string>
+    <string name="open_word_hint">Opens Word in Chrome. Saves to OneDrive automatically.</string>
+    <string name="ribbon_title">Get the full Word ribbon</string>
+    <string name="ribbon_steps">Word shows its full editor (File, Home, Insert, Layout, References, Review) when Chrome asks for the desktop site. Set it once:\n\n1. Tap Open Word in Chrome below.\n2. In Chrome, tap ⋮ (top right).\n3. Tick Desktop site. Chrome remembers this for Word.</string>
+    <string name="ribbon_open">Open Word in Chrome</string>
+    <string name="ribbon_done">Got it</string>
     <string name="open_onedrive">Browse my OneDrive files</string>
 
     <string name="recent_title">Continue where you left off</string>

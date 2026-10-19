@@ -32,3 +32,20 @@ fun Context.openInBrowser(uri: Uri) {
         }
     }
 }
+
+/**
+ * Opens a link in the full Chrome app. Chrome's menu there has "Desktop site", which makes Word for
+ * the web show its full ribbon editor. Chrome remembers that choice per site. Falls back to a Custom Tab
+ * (or any browser) when Chrome is not installed.
+ */
+fun Context.openInChromeApp(uri: Uri) {
+    val chrome = Intent(Intent.ACTION_VIEW, uri)
+        .setPackage("com.android.chrome")
+        .addCategory(Intent.CATEGORY_BROWSABLE)
+        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    try {
+        startActivity(chrome)
+    } catch (e: ActivityNotFoundException) {
+        openInBrowser(uri)
+    }
+}

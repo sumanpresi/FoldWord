@@ -17,8 +17,15 @@ Tick each item on a real Galaxy Z Fold 8. Record the Android version and One UI 
 - [ ] The splash screen shows the blue W and no flicker on launch.
 - [ ] The privacy note is visible and readable.
 
+## C0. Full Word ribbon (one-time setup)
+- [ ] "Get the full Word ribbon" card shows on first launch.
+- [ ] "Open Word in Chrome" opens the full Chrome app (with tabs and address bar), not the in-app tab.
+- [ ] In Chrome: ⋮ > tick Desktop site. Word reloads with File, Home, Insert, Layout, References, Review, View.
+- [ ] Close Chrome, tap Open Word again: the full ribbon appears without ticking Desktop site again.
+- [ ] "Got it" hides the card, and it stays hidden after restarting Fold Word.
+
 ## C. Primary path: Open Word (browser)
-- [ ] "Open Word" opens https://word.cloud.microsoft/ in a Chrome Custom Tab, with the address shown.
+- [ ] "Open Word" opens https://word.cloud.microsoft/ in the Chrome app (falls back to an in-app Chrome tab if Chrome is missing).
 - [ ] Microsoft's sign-in page appears and works. Use a real test account you own. The app never asks for or stores the password.
 - [ ] After sign-in, you can open or create a document.
 - [ ] Typing, formatting, and inserting a table work in the document.

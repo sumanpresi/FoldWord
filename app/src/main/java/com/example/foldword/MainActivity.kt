@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         // Primary path: Microsoft's own editor in Chrome, with its own sign-in. Editing works here.
         findViewById<MaterialButton>(R.id.btnOpenWord).setOnClickListener {
-            openInBrowser(Uri.parse(Config.WORD_URL))
+            openInChromeApp(Uri.parse(Config.WORD_URL))
         }
 
         // Existing documents live in OneDrive; opening one there launches the Word editor in Chrome.
         findViewById<MaterialButton>(R.id.btnOpenOneDrive).setOnClickListener {
-            openInBrowser(Uri.parse(Config.ONEDRIVE_URL))
+            openInChromeApp(Uri.parse(Config.ONEDRIVE_URL))
         }
 
         // Beta: Word inside this app. Sign-in works, but Microsoft blocks editing in embedded browsers.
@@ -39,7 +39,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<MaterialButton>(R.id.btnContinue).setOnClickListener {
-            openInBrowser(Uri.parse(recentUrl() ?: Config.WORD_URL))
+            openInChromeApp(Uri.parse(recentUrl() ?: Config.WORD_URL))
+        }
+
+        // One-time tip: how to get Word's full ribbon (Chrome "Desktop site" for Word).
+        findViewById<MaterialButton>(R.id.btnRibbonOpen).setOnClickListener {
+            openInChromeApp(Uri.parse(Config.WORD_URL))
+        }
+        findViewById<MaterialButton>(R.id.btnRibbonDone).setOnClickListener {
+            prefs.edit().putBoolean(Config.KEY_RIBBON_TIP_DONE, true).apply()
+            refreshRibbonTip()
         }
 
         findViewById<MaterialButton>(R.id.btnForget).setOnClickListener {
@@ -51,6 +60,12 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         refreshRecent()
+        refreshRibbonTip()
+    }
+
+    private fun refreshRibbonTip() {
+        val done = prefs.getBoolean(Config.KEY_RIBBON_TIP_DONE, false)
+        findViewById<MaterialCardView>(R.id.cardRibbon).visibility = if (done) View.GONE else View.VISIBLE
     }
 
     private fun recentUrl(): String? = prefs.getString(Config.KEY_RECENT, null)

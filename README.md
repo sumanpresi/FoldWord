@@ -3,7 +3,7 @@
 A small Android launcher for **Microsoft Word for the web** (`https://word.cloud.microsoft/`), made for the Samsung Galaxy Z Fold 8.
 
 ## What it does
-- **Open Word:** opens Microsoft's official site in a Chrome Custom Tab. This is the recommended way to edit. Microsoft handles sign-in, subscriptions, the editor, and OneDrive saving.
+- **Open Word:** opens Microsoft's official site in the Chrome app. This is the recommended way to edit. Turn on Chrome's *Desktop site* once for Word (⋮ > Desktop site) to get Word's full ribbon editor; Chrome remembers it. Microsoft handles sign-in, subscriptions, the editor, and OneDrive saving.
 - **Browse my OneDrive files:** opens your OneDrive file list in Chrome.
 - **Sign-in check (beta):** loads Word inside the app. Sign-in works, but Microsoft blocks document editing in embedded browsers, so editing is only supported through Open Word.
 - **Continue where you left off:** remembers the last Word page visited in the beta screen (scheme, host and path only). You can forget it at any time.

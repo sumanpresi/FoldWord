@@ -24,7 +24,20 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
+
+        <!-- Home-screen shortcut target: opens Word in Chrome in one tap, shows no screen of its own.
+             Exported so the launcher can start pinned shortcuts; it only opens fixed Microsoft URLs. -->
+        <activity
+            android:name=".QuickOpenActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- Beta in-app WebView. Not exported: only this app can open it. -->
         <activity

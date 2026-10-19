@@ -24,6 +24,12 @@ Tick each item on a real Galaxy Z Fold 8. Record the Android version and One UI 
 - [ ] Close Chrome, tap Open Word again: the full ribbon appears without ticking Desktop site again.
 - [ ] "Got it" hides the card, and it stays hidden after restarting Fold Word.
 
+## C1. One-tap home-screen access
+- [ ] "Add one-tap Word to home screen" shows Android's "Add to home screen" prompt; accepting adds a "Word" icon.
+- [ ] Tapping that icon opens Word in the Chrome app directly, with no Fold Word screen in between.
+- [ ] Long-press the Fold Word icon: "Word" and "OneDrive" shortcuts appear and each opens in Chrome.
+- [ ] Dragging a long-press shortcut to the home screen also gives one-tap access.
+
 ## C. Primary path: Open Word (browser)
 - [ ] "Open Word" opens https://word.cloud.microsoft/ in the Chrome app (falls back to an in-app Chrome tab if Chrome is missing).
 - [ ] Microsoft's sign-in page appears and works. Use a real test account you own. The app never asks for or stores the password.

@@ -10,6 +10,13 @@
     <string name="ribbon_open">Open Word in Chrome</string>
     <string name="ribbon_done">Got it</string>
     <string name="open_onedrive">Browse my OneDrive files</string>
+    <string name="add_home">Add one-tap Word to home screen</string>
+    <string name="add_home_done">Check your home screen for the Word icon.</string>
+    <string name="add_home_unsupported">Your home screen doesn\'t allow this. Long-press the Fold Word icon and drag "Word" to the home screen instead.</string>
+    <string name="shortcut_word_short">Word</string>
+    <string name="shortcut_word_long">Open Word in Chrome</string>
+    <string name="shortcut_onedrive_short">OneDrive</string>
+    <string name="shortcut_onedrive_long">Browse OneDrive files</string>
 
     <string name="recent_title">Continue where you left off</string>
     <string name="continue_label">Continue</string>

@@ -6,6 +6,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.pm.ShortcutInfoCompat
+import androidx.core.content.pm.ShortcutManagerCompat
+import androidx.core.graphics.drawable.IconCompat
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
@@ -29,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.btnOpenOneDrive).setOnClickListener {
             openInChromeApp(Uri.parse(Config.ONEDRIVE_URL))
         }
+
+        // One-tap home-screen icon that opens Word straight in Chrome.
+        findViewById<MaterialButton>(R.id.btnAddHome).setOnClickListener { pinWordShortcut() }
 
         // Beta: Word inside this app. Sign-in works, but Microsoft blocks editing in embedded browsers.
         findViewById<MaterialButton>(R.id.btnOpenBeta).setOnClickListener {
@@ -61,6 +68,24 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         refreshRecent()
         refreshRibbonTip()
+    }
+
+    private fun pinWordShortcut() {
+        if (!ShortcutManagerCompat.isRequestPinShortcutSupported(this)) {
+            Toast.makeText(this, R.string.add_home_unsupported, Toast.LENGTH_LONG).show()
+            return
+        }
+        val intent = Intent(this, QuickOpenActivity::class.java)
+            .setAction(Intent.ACTION_VIEW)
+            .putExtra(QuickOpenActivity.EXTRA_TARGET, QuickOpenActivity.TARGET_WORD)
+        val shortcut = ShortcutInfoCompat.Builder(this, "pinned_word")
+            .setShortLabel(getString(R.string.shortcut_word_short))
+            .setLongLabel(getString(R.string.shortcut_word_long))
+            .setIcon(IconCompat.createWithResource(this, R.mipmap.ic_launcher))
+            .setIntent(intent)
+            .build()
+        ShortcutManagerCompat.requestPinShortcut(this, shortcut, null)
+        Toast.makeText(this, R.string.add_home_done, Toast.LENGTH_SHORT).show()
     }
 
     private fun refreshRibbonTip() {

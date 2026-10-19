@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Long-press the Fold Word icon to see these. Drag one to the home screen for one-tap access. -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="open_word"
+        android:shortcutLongLabel="@string/shortcut_word_long"
+        android:shortcutShortLabel="@string/shortcut_word_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.example.foldword.QuickOpenActivity"
+            android:targetPackage="com.example.foldword">
+            <extra
+                android:name="target"
+                android:value="word" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="open_onedrive"
+        android:shortcutLongLabel="@string/shortcut_onedrive_long"
+        android:shortcutShortLabel="@string/shortcut_onedrive_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.example.foldword.QuickOpenActivity"
+            android:targetPackage="com.example.foldword">
+            <extra
+                android:name="target"
+                android:value="onedrive" />
+        </intent>
+    </shortcut>
+</shortcuts>

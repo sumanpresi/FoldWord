@@ -2,13 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_reload"
-        android:title="@string/reload"
-        app:showAsAction="ifRoom" />
-
+    <!-- Always visible: editing works in Chrome, not in this beta screen. -->
     <item
         android:id="@+id/action_browser"
         android:title="@string/open_in_browser"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_reload"
+        android:title="@string/reload"
         app:showAsAction="never" />
 </menu>

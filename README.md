@@ -4,7 +4,8 @@ A small Android launcher for **Microsoft Word for the web** (`https://word.cloud
 
 ## What it does
 - **Open Word:** opens Microsoft's official site in a Chrome Custom Tab. This is the recommended way to edit. Microsoft handles sign-in, subscriptions, the editor, and OneDrive saving.
-- **Open inside Fold Word (beta):** loads the same site in an app WebView. Sign-in and editing may not work reliably there. See the test checklist.
+- **Browse my OneDrive files:** opens your OneDrive file list in Chrome.
+- **Sign-in check (beta):** loads Word inside the app. Sign-in works, but Microsoft blocks document editing in embedded browsers, so editing is only supported through Open Word.
 - **Continue where you left off:** remembers the last Word page visited in the beta screen (scheme, host and path only). You can forget it at any time.
 
 ## What it does not do

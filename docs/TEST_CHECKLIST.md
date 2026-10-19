@@ -26,7 +26,8 @@ Tick each item on a real Galaxy Z Fold 8. Record the Android version and One UI 
 - [ ] Your existing Microsoft session is still active the next time you tap "Open Word" (no need to sign in again).
 - [ ] Back closes the Custom Tab and returns to Fold Word.
 
-## D. Beta path: Open inside Fold Word
+## D. Beta path: Sign-in check (beta)
+> Known limit: Microsoft shows "Word ran into a problem opening this document in a browser" here. That is expected; editing is only supported in Chrome.
 - [ ] The beta screen loads word.cloud.microsoft with the progress bar.
 - [ ] Sign-in works, or the failure is recorded below with the exact message and the page it stopped on.
 - [ ] Editing works and does not freeze.
@@ -34,10 +35,16 @@ Tick each item on a real Galaxy Z Fold 8. Record the Android version and One UI 
 - [ ] The Upload or Insert picture option opens the phone's file picker, and the chosen file uploads.
 - [ ] Download or export: blob links show the "saved in the browser" message. HTTPS downloads open in the browser.
 - [ ] Back goes to the previous Word page. At the first page it exits the screen.
-- [ ] Reload works. Open in browser (menu) opens the current page in Chrome.
+- [ ] "Edit in Chrome" is visible in the top bar and opens the current page in Chrome. Reload is in the ⋮ menu.
 - [ ] Airplane mode: the friendly error message appears and Reload recovers after reconnecting.
 - [ ] Fold and unfold while editing: the page does not reload, and typing is not lost.
 - [ ] Rotate while the menu is open: no crash.
+
+## B2. Fold layouts
+- [ ] Unfolded: the blue brand panel is on the left and the buttons are on the right.
+- [ ] Folded (cover screen): the brand panel is on top and the buttons are below.
+- [ ] Light mode (Settings > Display): all button labels are readable.
+- [ ] "Browse my OneDrive files" opens onedrive.live.com in Chrome, and opening a .docx there starts the Word editor.
 
 ## E. Recent shortcut
 - [ ] After visiting Word in the beta screen, "Continue where you left off" appears on the launch screen.

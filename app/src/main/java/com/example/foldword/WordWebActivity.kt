@@ -54,6 +54,7 @@ class WordWebActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_word_web)
         setSupportActionBar(findViewById<MaterialToolbar>(R.id.toolbar))
+        supportActionBar?.title = getString(R.string.web_title)
 
         progress = findViewById(R.id.progress)
         status = findViewById(R.id.txtStatus)

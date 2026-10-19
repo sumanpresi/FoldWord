@@ -5,7 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 
 /**
  * Opens a link in the user's browser with a Chrome Custom Tab. Custom Tabs share the browser's
@@ -13,7 +15,15 @@ import androidx.browser.customtabs.CustomTabsIntent
  */
 fun Context.openInBrowser(uri: Uri) {
     try {
-        CustomTabsIntent.Builder().setShowTitle(true).build().launchUrl(this, uri)
+        val colors = CustomTabColorSchemeParams.Builder()
+            .setToolbarColor(ContextCompat.getColor(this, R.color.brand_blue_dark))
+            .build()
+        CustomTabsIntent.Builder()
+            .setShowTitle(true)
+            .setDefaultColorSchemeParams(colors)
+            .setShareState(CustomTabsIntent.SHARE_STATE_ON)
+            .build()
+            .launchUrl(this, uri)
     } catch (e: ActivityNotFoundException) {
         try {
             startActivity(Intent(Intent.ACTION_VIEW, uri))

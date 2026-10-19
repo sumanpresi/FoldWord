@@ -7,6 +7,9 @@ object Config {
     /** The official Microsoft Word for the web address. */
     const val WORD_URL = "https://word.cloud.microsoft/"
 
+    /** The user's own OneDrive file list (Microsoft's official address). */
+    const val ONEDRIVE_URL = "https://onedrive.live.com/"
+
     /**
      * Hosts the beta WebView may load. Everything else opens in the system browser.
      * Add a host only after testing shows sign-in needs it. Never add a host you do not control or recognise.

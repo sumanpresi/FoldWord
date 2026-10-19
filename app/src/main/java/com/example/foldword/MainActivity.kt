@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
-/** Launch screen: one large "Open Word" button, plus a shortcut to the last page visited. */
+/** Launch screen: one large "Open Word" button, OneDrive files, and a shortcut to the last page. */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var prefs: SharedPreferences
@@ -20,16 +20,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         prefs = getSharedPreferences(Config.PREFS, MODE_PRIVATE)
 
-        // Primary path: Microsoft's own page, in the browser, with its own sign-in.
+        // Primary path: Microsoft's own editor in Chrome, with its own sign-in. Editing works here.
         findViewById<MaterialButton>(R.id.btnOpenWord).setOnClickListener {
             openInBrowser(Uri.parse(Config.WORD_URL))
         }
 
-        // Beta path: Word inside this app. Sign-in may fail here; see docs/TEST_CHECKLIST.md.
+        // Existing documents live in OneDrive; opening one there launches the Word editor in Chrome.
+        findViewById<MaterialButton>(R.id.btnOpenOneDrive).setOnClickListener {
+            openInBrowser(Uri.parse(Config.ONEDRIVE_URL))
+        }
+
+        // Beta: Word inside this app. Sign-in works, but Microsoft blocks editing in embedded browsers.
         findViewById<MaterialButton>(R.id.btnOpenBeta).setOnClickListener {
             startActivity(
                 Intent(this, WordWebActivity::class.java)
-                    .putExtra(WordWebActivity.EXTRA_URL, recentUrl() ?: Config.WORD_URL)
+                    .putExtra(WordWebActivity.EXTRA_URL, Config.WORD_URL)
             )
         }
 
@@ -54,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         val card = findViewById<MaterialCardView>(R.id.cardRecent)
         val url = recentUrl()
         card.visibility = if (url == null) View.GONE else View.VISIBLE
-        // Show only the path, which is what the user recognises (for example, a document name).
         findViewById<TextView>(R.id.txtRecent).text = url?.let { Uri.parse(it).path ?: "" } ?: ""
     }
 }

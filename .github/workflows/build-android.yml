@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build-debug-apk:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: avoids the ubuntu-latest switchover queue
     timeout-minutes: 45
 
     steps:

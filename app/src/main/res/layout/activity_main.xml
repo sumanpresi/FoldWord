@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/big_button_height"
                 android:text="@string/open_word"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:cornerRadius="16dp" />
 
@@ -67,6 +68,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/open_beta"
+                android:textColor="@color/white"
                 app:cornerRadius="16dp" />
 
             <com.google.android.material.card.MaterialCardView

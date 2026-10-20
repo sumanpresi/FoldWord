@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Offline actions: these all work without internet. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView style="@style/FW.Section" android:text="@string/section_offline" />
+    <TextView style="@style/FW.Hint" android:text="@string/section_offline_hint" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNew"
+            style="@style/FW.Tile"
+            android:layout_marginEnd="6dp"
+            android:text="@string/new_document"
+            app:icon="@drawable/ic_doc_add" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOpen"
+            style="@style/FW.Tile"
+            android:layout_marginStart="6dp"
+            android:text="@string/open_file"
+            app:icon="@drawable/ic_file" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBrowse"
+            style="@style/FW.Tile"
+            android:layout_marginEnd="6dp"
+            android:text="@string/browse_phone"
+            app:icon="@drawable/ic_phone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOffline"
+            style="@style/FW.Tile"
+            android:layout_marginStart="6dp"
+            android:text="@string/offline_documents"
+            app:icon="@drawable/ic_folder" />
+    </LinearLayout>
+</LinearLayout>

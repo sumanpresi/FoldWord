@@ -1,0 +1,7 @@
+{
+  "name": "fold-word-editor-tests",
+  "private": true,
+  "description": "Automated tests for Fold Word's offline editor page",
+  "scripts": { "test": "node test_editor.js" },
+  "devDependencies": { "jsdom": "24.1.3" }
+}

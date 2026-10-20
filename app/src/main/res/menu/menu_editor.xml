@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/m_save" android:title="@string/m_save" app:showAsAction="always|withText" />
+    <item android:id="@+id/m_undo" android:title="@string/m_undo" app:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/m_redo" android:title="@string/m_redo" app:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/m_find" android:title="@string/m_find" app:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/m_panel" android:title="@string/m_panel" app:showAsAction="never" />
+    <item android:id="@+id/m_save_as" android:title="@string/m_save_as" app:showAsAction="never" />
+    <item android:id="@+id/m_info" android:title="@string/m_info" app:showAsAction="never" />
+    <item android:id="@+id/m_rename" android:title="@string/m_rename" app:showAsAction="never" />
+    <item android:id="@+id/m_share" android:title="@string/m_share" app:showAsAction="never" />
+    <item android:id="@+id/m_upload" android:title="@string/m_upload" app:showAsAction="never" />
+    <item android:id="@+id/m_online" android:title="@string/m_online" app:showAsAction="never" />
+    <item android:id="@+id/m_delete" android:title="@string/m_delete" app:showAsAction="never" />
+</menu>

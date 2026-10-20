@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- The only permission: loading web pages. No camera, storage, location, or contacts. -->
+    <!-- Internet: only for Microsoft Word Online, which opens in Chrome. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Network state: to show "Online / No internet" and explain when Word Online can't open. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- No storage permission: every file and folder is chosen by the user in Android's file picker. -->
 
     <application
         android:allowBackup="false"
@@ -14,12 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoldWord">
 
-        <!-- Launch screen. Handles fold/unfold without restarting, so the page is not reloaded. -->
+        <!-- Home screen. Restarts on fold/unfold so the one- or two-column layout is chosen. -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:resizeableActivity="true"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden">
+            android:resizeableActivity="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,6 +30,49 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
+
+        <!-- Offline editor. Keeps running through fold/unfold so typing and undo history are kept.
+             Exported only so "Open with Fold Word" works from file managers; it accepts content:// files only. -->
+        <activity
+            android:name=".EditorActivity"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden|navigation|uiMode|density">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="text/markdown" />
+                <data android:mimeType="text/x-markdown" />
+            </intent-filter>
+        </activity>
+
+        <!-- View-only PDF reader. -->
+        <activity
+            android:name=".PdfActivity"
+            android:exported="true"
+            android:resizeableActivity="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+                <data android:mimeType="application/pdf" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".BrowseActivity"
+            android:exported="false"
+            android:resizeableActivity="true" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:resizeableActivity="true" />
 
         <!-- Home-screen shortcut target: opens Word in Chrome in one tap, shows no screen of its own.
              Exported so the launcher can start pinned shortcuts; it only opens fixed Microsoft URLs. -->
@@ -39,7 +84,7 @@
             android:taskAffinity=""
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!-- Beta in-app WebView. Not exported: only this app can open it. -->
+        <!-- Sign-in check (beta): Word for the web inside the app. Not exported. -->
         <activity
             android:name=".WordWebActivity"
             android:exported="false"

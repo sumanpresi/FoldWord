@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/brand_blue"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@color/white"
+        app:title="@string/settings"
+        app:titleTextColor="@color/white" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/screen_padding">
+
+            <TextView style="@style/FW.Section" android:text="@string/offline_documents" />
+            <TextView android:id="@+id/setFolderText" style="@style/FW.Body" />
+            <TextView style="@style/FW.Hint" android:text="@string/folder_explain" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/setFolder"
+                style="@style/FW.TonalButton" android:text="@string/choose_folder" />
+
+            <TextView style="@style/FW.Section" android:text="@string/privacy_title" />
+            <TextView style="@style/FW.Body" android:text="@string/privacy_full" />
+
+            <TextView style="@style/FW.Section" android:text="@string/online_title" />
+            <TextView style="@style/FW.Hint" android:text="@string/online_explain" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/setPin"
+                style="@style/FW.TonalButton" android:text="@string/add_home" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/setRibbonTip"
+                style="@style/FW.TonalButton" android:text="@string/show_ribbon_tip" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/setBeta"
+                style="@style/FW.TonalButton" android:text="@string/open_beta" />
+            <TextView style="@style/FW.Hint" android:text="@string/beta_note" />
+
+            <TextView style="@style/FW.Section" android:text="@string/storage_title" />
+            <TextView android:id="@+id/setStorageText" style="@style/FW.Body" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/setBackups"
+                style="@style/FW.TonalButton" android:text="@string/export_backup" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/setClearDrafts"
+                style="@style/FW.TonalButton" android:text="@string/clear_drafts" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/setClearRecent"
+                style="@style/FW.TonalButton" android:text="@string/clear_recent" />
+            <TextView style="@style/FW.Hint" android:text="@string/uninstall_warning" />
+
+            <TextView style="@style/FW.Section" android:text="@string/about_title" />
+            <TextView android:id="@+id/setVersion" style="@style/FW.Body" />
+            <TextView style="@style/FW.Hint" android:text="@string/about_body" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -13,3 +13,4 @@ captures/
 *.keystore
 keystore.properties
 secrets.properties
+node_modules/

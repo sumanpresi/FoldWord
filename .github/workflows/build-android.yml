@@ -1,4 +1,4 @@
-# Builds a DEBUG APK in the cloud. No signing secrets or credentials are needed.
+# Builds and tests Fold Word in the cloud. No signing secrets or credentials are needed.
 # Result: download "fold-word-debug-apk" from the run's Artifacts section.
 name: Build Fold Word APK
 
@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build-debug-apk:
-    runs-on: ubuntu-24.04   # pinned: avoids the ubuntu-latest switchover queue
+    runs-on: ubuntu-24.04     # pinned image
     timeout-minutes: 45
 
     steps:
@@ -26,11 +26,20 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Set up Node.js 20 (editor tests)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Test the offline editor page
+        working-directory: tools/editor-tests
+        run: |
+          npm ci --no-audit --no-fund
+          npm test
+
       - name: Install Android SDK packages (API 35)
         # The GitHub Ubuntu runner already has the Android SDK in $ANDROID_HOME.
-        # We only add the API 35 platform and build tools this app needs.
         run: |
-          echo "ANDROID_HOME=$ANDROID_HOME"
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-35" "build-tools;35.0.0"
 
@@ -39,8 +48,44 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Build the debug APK
-        run: gradle --no-daemon assembleDebug
+      - name: Run unit tests and build the debug APK
+        run: |
+          set -o pipefail
+          gradle --no-daemon --stacktrace testDebugUnitTest assembleDebug lintDebug 2>&1 | tee build.log
+
+      - name: Report test results
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import glob, os, xml.etree.ElementTree as ET
+          total = failed = skipped = 0
+          lines = []
+          for f in sorted(glob.glob('app/build/test-results/testDebugUnitTest/*.xml')):
+              r = ET.parse(f).getroot()
+              total += int(r.get('tests', 0)); skipped += int(r.get('skipped', 0))
+              for tc in r.iter('testcase'):
+                  bad = tc.find('failure') if tc.find('failure') is not None else tc.find('error')
+                  name = tc.get('classname', '').split('.')[-1] + '.' + tc.get('name', '')
+                  if bad is not None:
+                      failed += 1
+                      msg = (bad.get('message') or bad.text or '').strip().replace('\n', ' ')[:600]
+                      print(f"::error title=Unit test failed::{name}: {msg}")
+                      lines.append(f"| FAIL | {name} | {msg} |")
+                  else:
+                      lines.append(f"| pass | {name} | |")
+          summary = f"Unit tests: {total} run, {failed} failed, {skipped} skipped"
+          print(f"::notice title=Unit tests::{summary}")
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as s:
+              s.write(f"## {summary}\n\n| Result | Test | Message |\n|---|---|---|\n" + "\n".join(lines) + "\n")
+          PY
+
+      - name: Explain a failed build
+        if: failure()
+        run: |
+          if [ -f build.log ]; then
+            msg=$(grep -E "^e: |error:|ERROR:|FAILED|What went wrong|AAPT|Unresolved|Could not" -A2 build.log | head -80 | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+            echo "::error title=Build failed::${msg}"
+          fi
 
       - name: Upload the APK
         uses: actions/upload-artifact@v4
@@ -48,4 +93,16 @@ jobs:
           name: fold-word-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload test and lint reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fold-word-reports
+          path: |
+            app/build/reports/
+            app/build/test-results/
+            build.log
+          if-no-files-found: ignore
           retention-days: 14

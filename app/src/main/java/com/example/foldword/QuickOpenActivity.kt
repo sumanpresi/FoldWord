@@ -23,7 +23,11 @@ class QuickOpenActivity : Activity() {
             TARGET_ONEDRIVE -> Config.ONEDRIVE_URL
             else -> Config.WORD_URL
         }
-        openInChromeApp(Uri.parse(url))
+        if (isOnline()) {
+            openInChromeApp(Uri.parse(url))
+        } else {
+            android.widget.Toast.makeText(this, R.string.need_internet_toast, android.widget.Toast.LENGTH_LONG).show()
+        }
         finish()
     }
 }

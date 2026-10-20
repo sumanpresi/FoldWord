@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Offline editor. On the unfolded screen a document list appears on the left (see EditorActivity). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/brand_blue"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@color/white"
+        app:subtitleTextColor="@color/brand_tagline"
+        app:titleTextColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/sidePanel"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:background="?attr/colorSurfaceContainerLow"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="6dp"
+                android:text="@string/side_documents"
+                android:textAppearance="?attr/textAppearanceTitleSmall"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/sideList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp" />
+            </ScrollView>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/sideDivider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/colorOutlineVariant"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/banner_bg"
+                android:padding="12dp"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/banner_ink"
+                android:visibility="gone" />
+
+            <WebView
+                android:id="@+id/editorWeb"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/findBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorSurfaceContainer"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/findText"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:hint="@string/find_hint"
+                    android:imeOptions="actionSearch"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/findCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="56dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textAppearance="?attr/textAppearanceBodySmall" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/findPrev"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:contentDescription="@string/find_prev"
+                    android:text="@string/find_prev_short" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/findNext"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:contentDescription="@string/find_next"
+                    android:text="@string/find_next_short" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/findClose"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/close" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorSurfaceContainer"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:id="@+id/statusChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chip_offline"
+                    android:paddingStart="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/offline_editor"
+                    android:textAppearance="?attr/textAppearanceLabelMedium"
+                    android:textColor="@color/chip_offline_ink" />
+
+                <TextView
+                    android:id="@+id/statusWords"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:textAppearance="?attr/textAppearanceBodySmall" />
+
+                <TextView
+                    android:id="@+id/statusSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceLabelMedium" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

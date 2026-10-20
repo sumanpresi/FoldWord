@@ -1,32 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Fold Word</string>
-    <string name="tagline">Microsoft Word, built for your Galaxy Z Fold 8</string>
+    <string name="tagline">Documents for your Galaxy Z Fold 8, offline and online</string>
 
-    <string name="open_word">Open Word</string>
-    <string name="open_word_hint">Opens Word in Chrome. Saves to OneDrive automatically.</string>
+    <!-- Home -->
+    <string name="settings">Settings</string>
+    <string name="net_online">Online</string>
+    <string name="net_offline">No internet</string>
+    <string name="section_offline">Offline documents</string>
+    <string name="section_offline_hint">Work on files stored on this phone. No internet or Microsoft account needed.</string>
+    <string name="new_document">New document</string>
+    <string name="open_file">Open file</string>
+    <string name="browse_phone">Browse phone</string>
+    <string name="offline_documents">Offline documents</string>
+    <string name="section_online">Microsoft Word Online</string>
+    <string name="section_online_hint">Microsoft\'s own Word for the web in Chrome. Needs internet. Sign-in, subscription and OneDrive saving are handled by Microsoft.</string>
+    <string name="open_word_online">Open Microsoft Word Online</string>
+    <string name="open_word_online_offline">Open Word Online (needs internet)</string>
+    <string name="open_onedrive">Browse my OneDrive files</string>
+    <string name="recent_documents">Recent documents</string>
+    <string name="no_recent">Documents you open appear here.</string>
+    <string name="clear">Clear</string>
+    <string name="unsaved_draft">Unsaved changes · %1$s</string>
+    <string name="draft_delete_body">Delete these unsaved changes? This can\'t be undone.</string>
+    <string name="privacy_note">Fold Word is not made by Microsoft. It never asks for or stores your Microsoft password, and it never uploads your files on its own.</string>
+    <string name="offline_folder_title">Choose your Fold Word folder</string>
+    <string name="offline_folder_body">Pick a folder on your phone (for example Documents) where Fold Word keeps your offline documents. Files there stay on your phone even if Fold Word is uninstalled.</string>
+    <string name="choose_folder">Choose folder</string>
+    <string name="choose_another_folder">Choose another folder…</string>
+    <string name="need_internet_toast">No internet. Word Online needs a connection; your offline documents still work.</string>
+
+    <!-- New document -->
+    <string name="new_docx">Word document (.docx)</string>
+    <string name="new_txt">Plain text (.txt)</string>
+    <string name="new_md">Markdown (.md)</string>
+    <string name="new_here">New</string>
+    <string name="new_named">New %1$s</string>
+    <string name="untitled">Untitled</string>
+    <string name="create">Create</string>
+    <string name="create_failed">The new file could not be created here.</string>
+
+    <!-- Browse -->
+    <string name="folder">Folder</string>
+    <string name="open">Open</string>
+    <string name="refresh">Refresh</string>
+    <string name="browse_empty">No documents in this folder yet.</string>
+    <string name="browse_lost_access">Fold Word no longer has access to this folder. Go back and choose it again.</string>
+    <string name="not_supported_short">Not supported</string>
+    <string name="not_supported_long">Fold Word can open .docx, .txt, .md and .pdf (view only) files.</string>
+
+    <!-- Editor -->
+    <string name="side_documents">Recent documents</string>
+    <string name="offline_editor">Offline · no internet needed</string>
+    <string name="not_saved_yet">Not saved yet</string>
+    <string name="status_opening">Opening…</string>
+    <string name="status_saving">Saving…</string>
+    <string name="status_unsaved">Unsaved changes</string>
+    <string name="status_saved">Saved</string>
+    <string name="status_saved_at">Saved %1$s</string>
+    <string name="status_words">%1$d words</string>
+    <string name="banner_lost">This file contains things the offline editor can\'t keep. To protect your original, saving creates a copy. Not kept in the copy:\n%1$s</string>
+    <string name="banner_read_only">This location doesn\'t allow changes. Use Save As to keep your edits.</string>
+    <string name="banner_restored">Your unsaved changes were restored.</string>
+    <string name="banner_restored_auto">Fold Word was closed in the background; your unsaved changes were brought back.</string>
+    <string name="draft_found_title">Unsaved changes found</string>
+    <string name="draft_found_body">You have unsaved changes to this document from %1$s. Restore them?</string>
+    <string name="draft_missing">Those unsaved changes are no longer available.</string>
+    <string name="restore">Restore</string>
+    <string name="discard">Discard</string>
+    <string name="keep_draft">Keep as draft</string>
+    <string name="cant_open">Can\'t open this document</string>
+    <string name="remove_from_recent">Remove from list</string>
+    <string name="close">Close</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="keep_original_title">Save as a copy</string>
+    <string name="keep_original_body">Saving over the original would remove:\n%1$s\n\nFold Word will save your edits as a separate copy and leave the original unchanged.</string>
+    <string name="save_copy">Save a copy</string>
+    <string name="read_only_title">Can\'t change this file</string>
+    <string name="read_only_body">This file\'s location doesn\'t let Fold Word save changes. Save a copy somewhere else instead?</string>
+    <string name="replace_title">Replace \"%1$s\"?</string>
+    <string name="replace_body">Your changes will replace the file in %1$s. Fold Word keeps a backup of the previous version (Settings › Backups).</string>
+    <string name="replace">Replace</string>
+    <string name="save_as_title">Save as</string>
+    <string name="format_loses_title">Saving as %1$s</string>
+    <string name="format_loses_body">This format can\'t store:\n%1$s\n\nThe saved file will not include them. Your open document is not changed.</string>
+    <string name="save_anyway">Save anyway</string>
+    <string name="editor_not_ready">The editor is still starting. Try again in a moment.</string>
+    <string name="saved_to">Saved %1$s to %2$s</string>
+    <string name="save_failed">Not saved</string>
+    <string name="save_failed_kept">Your changes are kept in a recovery draft, so nothing is lost.</string>
+    <string name="unsaved_title">Unsaved changes</string>
+    <string name="unsaved_body">Save your changes before closing?</string>
+    <string name="find_hint">Find in document</string>
+    <string name="find_prev">Previous match</string>
+    <string name="find_next">Next match</string>
+    <string name="find_prev_short">Prev</string>
+    <string name="find_next_short">Next</string>
+    <string name="find_none">No matches</string>
+    <string name="no_backups">No backups yet. A backup is made whenever Fold Word replaces a file.</string>
+
+    <!-- Editor menu -->
+    <string name="m_save">Save</string>
+    <string name="m_save_as">Save as…</string>
+    <string name="m_undo">Undo</string>
+    <string name="m_redo">Redo</string>
+    <string name="m_find">Find</string>
+    <string name="m_panel">Show or hide document list</string>
+    <string name="m_info">Document information</string>
+    <string name="m_rename">Rename</string>
+    <string name="m_delete">Delete</string>
+    <string name="m_share">Share a copy</string>
+    <string name="m_upload">Upload to OneDrive…</string>
+    <string name="m_online">Open Word Online</string>
+    <string name="info_name">Name: %1$s</string>
+    <string name="info_location">Location: %1$s</string>
+    <string name="info_format">Format: %1$s</string>
+    <string name="info_words">%1$d words, %2$d characters</string>
+    <string name="info_mode">Mode: offline editor (works without internet)</string>
+    <string name="info_size">File size: %1$s</string>
+    <string name="info_saved">Last saved: %1$s</string>
+    <string name="info_lost">Not supported in this document:\n%1$s</string>
+    <string name="delete_title">Delete \"%1$s\"?</string>
+    <string name="delete_body">The file will be deleted from %1$s. This can\'t be undone.</string>
+    <string name="deleted">Deleted %1$s</string>
+    <string name="share_saved_version">Sharing the last saved version. Save first to include your latest changes.</string>
+    <string name="upload_title">Upload to OneDrive</string>
+    <string name="upload_body">Uploading puts a separate copy of this file in your OneDrive. After that, the phone copy and the OneDrive copy are independent: changes in one do not appear in the other, so you may end up with two versions.\n\nFold Word never uploads anything on its own. Choose how to upload:</string>
+    <string name="upload_share">Send to the OneDrive app</string>
+    <string name="upload_web">Open OneDrive in Chrome</string>
+    <string name="upload_save_first">Saving first, then choose OneDrive from the share list.</string>
+    <string name="online_switch_title">Switching to Word Online</string>
+    <string name="online_switch_body">You have unsaved changes here. Word Online cannot see files on this phone, and Fold Word will not upload them. Save your changes first?</string>
+
+    <!-- PDF -->
+    <string name="pdf_view_only">PDF: view only. Fold Word does not edit PDF files.</string>
+    <string name="pdf_subtitle">%1$d pages · %2$s</string>
+    <string name="pdf_page">PDF page</string>
+    <string name="pdf_page_n">Page %1$d</string>
+    <string name="open_with_other_app">Open with another app</string>
+
+    <!-- Settings -->
+    <string name="folder_not_set">No folder chosen yet</string>
+    <string name="folder_explain">Fold Word suggests this folder when you save, and lists it under Offline documents. Files here stay on your phone if Fold Word is removed.</string>
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_full">• Offline documents never leave your phone unless you choose Share or Upload.\n• The offline editor runs inside the app and has no internet access.\n• Word Online opens Microsoft\'s own website in Chrome. Microsoft handles sign-in, subscriptions and OneDrive. Fold Word never sees your password and does not read Microsoft\'s cookies or pages.\n• Fold Word keeps only a list of recently opened file addresses, recovery drafts and backups, all inside the app on this phone.\n• No analytics, ads or tracking.</string>
+    <string name="online_title">Word Online</string>
+    <string name="online_explain">These open Microsoft\'s website in Chrome and need internet.</string>
+    <string name="show_ribbon_tip">Show the full-ribbon tip again</string>
+    <string name="ribbon_tip_back">The tip is back on the home screen.</string>
+    <string name="storage_title">Drafts, backups and history</string>
+    <string name="storage_summary">%1$d recovery drafts · %2$d backups · %3$d recent documents</string>
+    <string name="export_backup">Save a backup to the phone…</string>
+    <string name="backups_title">Backups (previous versions)</string>
+    <string name="backup_exported">Backup saved.</string>
+    <string name="clear_drafts">Delete all recovery drafts</string>
+    <string name="clear_drafts_title">Delete all drafts?</string>
+    <string name="clear_drafts_body">Unsaved changes in every recovery draft will be lost. Saved files are not affected.</string>
+    <string name="clear_recent">Clear the recent documents list</string>
+    <string name="clear_recent_title">Clear recent documents?</string>
+    <string name="clear_recent_body">Only the list is cleared. The files themselves are not deleted.</string>
+    <string name="uninstall_warning">Drafts, backups and the recent list are stored inside Fold Word and are removed if you uninstall it. Your saved documents in phone folders are not affected.</string>
+    <string name="about_title">About</string>
+    <string name="about_version">Fold Word %1$s</string>
+    <string name="about_body">Not affiliated with or endorsed by Microsoft. Microsoft Word and OneDrive are trademarks of Microsoft. Fold Word\'s offline document engine is its own code. It uses AndroidX and Material Components for Android (Apache License 2.0).</string>
+
+    <!-- Word Online tip and shortcuts (from earlier versions) -->
     <string name="ribbon_title">Get the full Word ribbon</string>
     <string name="ribbon_steps">Word shows its full editor (File, Home, Insert, Layout, References, Review) when Chrome asks for the desktop site. Set it once:\n\n1. Tap Open Word in Chrome below.\n2. In Chrome, tap ⋮ (top right).\n3. Tick Desktop site. Chrome remembers this for Word.</string>
     <string name="ribbon_open">Open Word in Chrome</string>
     <string name="ribbon_done">Got it</string>
-    <string name="open_onedrive">Browse my OneDrive files</string>
     <string name="add_home">Add one-tap Word to home screen</string>
     <string name="add_home_done">Check your home screen for the Word icon.</string>
-    <string name="add_home_unsupported">Your home screen doesn\'t allow this. Long-press the Fold Word icon and drag "Word" to the home screen instead.</string>
+    <string name="add_home_unsupported">Your home screen doesn\'t allow this. Long-press the Fold Word icon and drag \"Word\" to the home screen instead.</string>
     <string name="shortcut_word_short">Word</string>
     <string name="shortcut_word_long">Open Word in Chrome</string>
     <string name="shortcut_onedrive_short">OneDrive</string>
     <string name="shortcut_onedrive_long">Browse OneDrive files</string>
-
-    <string name="recent_title">Continue where you left off</string>
-    <string name="continue_label">Continue</string>
-    <string name="forget">Forget</string>
-
     <string name="open_beta">Sign-in check (beta)</string>
-    <string name="beta_note">Opens Word inside this app. Microsoft blocks document editing here, so use Open Word to edit.</string>
-
-    <string name="privacy_note">Sign-in, subscriptions and saving happen on Microsoft\'s own pages. Fold Word never sees or stores your Microsoft password.</string>
-
+    <string name="beta_note">Opens Word inside this app. Microsoft blocks document editing there, so use Open Word Online to edit.</string>
     <string name="web_title">Sign-in check (beta)</string>
     <string name="reload">Reload</string>
     <string name="open_in_browser">Edit in Chrome</string>

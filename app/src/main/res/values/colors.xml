@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Word-style blue, used for the brand panel, buttons and the app icon. -->
+    <!-- Brand blue, used for headers, buttons and the app icon. -->
     <color name="brand_blue">#FF2B579A</color>
     <color name="brand_blue_light">#FF3A6FC4</color>
     <color name="brand_blue_dark">#FF1E3F73</color>
     <color name="white">#FFFFFFFF</color>
     <color name="brand_tagline">#E6FFFFFF</color>
+
+    <color name="banner_bg">#FFFFF4CE</color>
+    <color name="banner_ink">#FF3D3000</color>
+    <color name="chip_offline_bg">#FFE3F2E6</color>
+    <color name="chip_offline_ink">#FF1E5B2A</color>
+    <color name="chip_online_bg">#FFDCE8FB</color>
+    <color name="chip_online_ink">#FF1E3F73</color>
+    <color name="row_selected">#332B579A</color>
 </resources>

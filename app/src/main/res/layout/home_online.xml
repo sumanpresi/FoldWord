@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Online actions: Microsoft's own Word for the web, in Chrome. Needs internet. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView style="@style/FW.Section" android:text="@string/section_online" />
+    <TextView style="@style/FW.Hint" android:text="@string/section_online_hint" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnWordOnline"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/big_button_height"
+        android:layout_marginTop="10dp"
+        android:text="@string/open_word_online"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="18dp"
+        app:icon="@drawable/ic_edit"
+        app:iconGravity="textStart"
+        app:iconPadding="12dp"
+        app:iconTint="@color/white" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOneDrive"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/open_onedrive"
+        android:textColor="?attr/colorOnSurface"
+        app:cornerRadius="18dp"
+        app:icon="@drawable/ic_cloud"
+        app:iconGravity="textStart"
+        app:iconPadding="12dp"
+        app:iconTint="?attr/colorOnSurface" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardRibbon"
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="18dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ribbon_title"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/ribbon_steps"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRibbonDone"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ribbon_done"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRibbonOpen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ribbon_open"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddHome"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="6dp"
+        android:text="@string/add_home"
+        android:textColor="?attr/colorOnSurface" />
+</LinearLayout>

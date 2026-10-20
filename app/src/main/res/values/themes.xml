@@ -6,4 +6,47 @@
         <item name="android:windowSplashScreenBackground">@color/brand_blue</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
     </style>
+
+    <!-- Reusable text and button styles for Fold Word screens. -->
+    <style name="FW" />
+    <style name="FW.Section">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="FW.Body">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyLarge</item>
+    </style>
+
+    <style name="FW.Hint">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <style name="FW.TonalButton" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+    <style name="FW.Tile" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/tile_height</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="iconGravity">top</item>
+        <item name="iconSize">30dp</item>
+        <item name="iconPadding">8dp</item>
+    </style>
 </resources>

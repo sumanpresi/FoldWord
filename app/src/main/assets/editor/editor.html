@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Offline editor. Loaded only from the app's own assets; it never contacts the network. -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+<title>Fold Word editor</title>
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+<div id="ribbon" role="toolbar" aria-label="Formatting">
+  <div class="grp">
+    <select id="style" title="Paragraph style" aria-label="Paragraph style">
+      <option value="normal">Normal</option>
+      <option value="title">Title</option>
+      <option value="h1">Heading 1</option>
+      <option value="h2">Heading 2</option>
+      <option value="h3">Heading 3</option>
+      <option value="quote">Quote</option>
+    </select>
+    <select id="size" title="Font size" aria-label="Font size">
+      <option value="">Size</option>
+      <option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
+      <option>14</option><option>16</option><option>18</option><option>20</option><option>24</option>
+      <option>28</option><option>32</option><option>36</option><option>48</option><option>72</option>
+    </select>
+  </div>
+  <div class="grp">
+    <button data-cmd="bold" title="Bold (Ctrl+B)" aria-label="Bold"><b>B</b></button>
+    <button data-cmd="italic" title="Italic (Ctrl+I)" aria-label="Italic"><i>I</i></button>
+    <button data-cmd="underline" title="Underline (Ctrl+U)" aria-label="Underline"><u>U</u></button>
+    <button data-cmd="strikeThrough" title="Strikethrough" aria-label="Strikethrough"><s>S</s></button>
+    <button data-act="clear" title="Clear formatting" aria-label="Clear formatting">T&#x2093;</button>
+  </div>
+  <div class="grp">
+    <button data-cmd="justifyLeft" title="Align left" aria-label="Align left">&#x2630;<sub>L</sub></button>
+    <button data-cmd="justifyCenter" title="Centre" aria-label="Centre">&#x2630;<sub>C</sub></button>
+    <button data-cmd="justifyRight" title="Align right" aria-label="Align right">&#x2630;<sub>R</sub></button>
+    <button data-cmd="justifyFull" title="Justify" aria-label="Justify">&#x2630;<sub>J</sub></button>
+  </div>
+  <div class="grp">
+    <button data-cmd="insertUnorderedList" title="Bullets" aria-label="Bullets">&#x2022;&#x2261;</button>
+    <button data-cmd="insertOrderedList" title="Numbering" aria-label="Numbering">1.&#x2261;</button>
+    <button data-cmd="outdent" title="Decrease indent" aria-label="Decrease indent">&#x21E4;</button>
+    <button data-cmd="indent" title="Increase indent" aria-label="Increase indent">&#x21E5;</button>
+  </div>
+  <div class="grp">
+    <button data-act="table" title="Insert table" aria-label="Insert table">&#x229E; Table</button>
+    <button data-act="rowAdd" class="tbl" title="Add row below" aria-label="Add row below">+Row</button>
+    <button data-act="colAdd" class="tbl" title="Add column right" aria-label="Add column right">+Col</button>
+    <button data-act="rowDel" class="tbl" title="Delete row" aria-label="Delete row">&minus;Row</button>
+    <button data-act="colDel" class="tbl" title="Delete column" aria-label="Delete column">&minus;Col</button>
+  </div>
+</div>
+
+<div id="tablePop" hidden>
+  <label>Rows <input id="tRows" type="number" min="1" max="50" value="3"></label>
+  <label>Columns <input id="tCols" type="number" min="1" max="20" value="3"></label>
+  <button id="tOk">Insert</button>
+  <button id="tCancel">Cancel</button>
+</div>
+
+<div id="scroller">
+  <article id="page" contenteditable="true" spellcheck="true" aria-label="Document"></article>
+</div>
+
+<script src="editor.js"></script>
+</body>
+</html>

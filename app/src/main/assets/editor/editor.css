@@ -1,0 +1,51 @@
+:root {
+  --bg: #e8eaee; --bar: #f6f7f9; --line: #d4d8de; --ink: #1d1f23; --muted: #646a73;
+  --accent: #2b579a; --accent-soft: rgba(43, 87, 154, .14); --page: #ffffff; --page-ink: #1d1f23;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #17191d; --bar: #23262c; --line: #363a42; --ink: #e7e9ec; --muted: #9aa1ab;
+          --accent: #8ab4ff; --accent-soft: rgba(138, 180, 255, .18); }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.4 system-ui, Roboto, "Segoe UI", sans-serif;
+       display: flex; flex-direction: column; overflow: hidden; }
+
+#ribbon { flex: none; display: flex; flex-wrap: wrap; gap: 4px 0; align-items: center; padding: 6px 8px;
+          background: var(--bar); border-bottom: 1px solid var(--line); }
+@media (max-width: 600px) { #ribbon { flex-wrap: nowrap; overflow-x: auto; } }
+.grp { display: flex; align-items: center; gap: 2px; padding: 0 8px; border-right: 1px solid var(--line); flex: none; }
+.grp:last-child { border-right: 0; }
+#ribbon button, #tablePop button { min-width: 44px; height: 44px; padding: 0 8px; border: 1px solid transparent;
+          border-radius: 8px; background: none; color: var(--ink); font: inherit; font-size: 16px; cursor: pointer; }
+#ribbon button:active, #ribbon button.on { background: var(--accent-soft); border-color: var(--accent); }
+#ribbon button:disabled { opacity: .35; }
+#ribbon sub { font-size: 9px; }
+select { height: 44px; border: 1px solid var(--line); border-radius: 8px; background: var(--page); color: var(--page-ink);
+         font: inherit; padding: 0 6px; }
+#style { width: 130px; } #size { width: 76px; }
+
+#tablePop { position: fixed; top: 64px; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; gap: 10px;
+            align-items: center; flex-wrap: wrap; padding: 12px 14px; background: var(--bar); border: 1px solid var(--line);
+            border-radius: 12px; box-shadow: 0 6px 24px rgba(0, 0, 0, .25); }
+#tablePop[hidden] { display: none; }
+#tablePop input { width: 64px; height: 40px; font: inherit; border: 1px solid var(--line); border-radius: 8px; padding: 0 6px; }
+
+#scroller { flex: 1; overflow: auto; padding: 18px 12px 120px; -webkit-overflow-scrolling: touch; }
+#page { background: var(--page); color: var(--page-ink); max-width: 816px; min-height: 1056px; margin: 0 auto;
+        padding: 72px 80px; box-shadow: 0 1px 4px rgba(0, 0, 0, .22); outline: none;
+        font-family: Calibri, Carlito, "Segoe UI", Roboto, Arial, sans-serif; font-size: 11pt; line-height: 1.45;
+        overflow-wrap: break-word; caret-color: #2b579a; }
+@media (max-width: 600px) { #page { padding: 28px 18px; min-height: 70vh; } }
+#page p { margin: 0 0 8pt; min-height: 1.45em; }
+#page .fw-title { font-size: 28pt; line-height: 1.15; margin-bottom: 6pt; }
+#page h1 { font-size: 18pt; font-weight: bold; color: #1f3864; margin: 18pt 0 4pt; }
+#page h2 { font-size: 15pt; font-weight: bold; color: #2f5496; margin: 8pt 0 4pt; }
+#page h3 { font-size: 13pt; font-weight: bold; color: #2f5496; margin: 8pt 0 4pt; }
+#page blockquote { font-style: italic; text-align: center; margin: 10pt 43pt; color: #404040; }
+#page ul, #page ol { margin: 0 0 8pt; padding-left: 36px; }
+#page li { margin: 0 0 2pt; }
+#page table { border-collapse: collapse; width: 100%; margin: 0 0 8pt; table-layout: fixed; }
+#page td, #page th { border: 1px solid #8a8f98; padding: 4px 6px; vertical-align: top; min-width: 40px; }
+#page td p, #page th p { margin: 0; }
+#page:focus { outline: none; }

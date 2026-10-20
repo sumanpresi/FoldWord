@@ -51,6 +51,8 @@
 
     <!-- Editor -->
     <string name="side_documents">Recent documents</string>
+    <string name="hide_documents">Hide</string>
+    <string name="hide_documents_desc">Hide the document list</string>
     <string name="offline_editor">Offline · no internet needed</string>
     <string name="not_saved_yet">Not saved yet</string>
     <string name="status_opening">Opening…</string>
@@ -108,7 +110,7 @@
     <string name="m_undo">Undo</string>
     <string name="m_redo">Redo</string>
     <string name="m_find">Find</string>
-    <string name="m_panel">Show or hide document list</string>
+    <string name="m_panel">Documents</string>
     <string name="m_info">Document information</string>
     <string name="m_rename">Rename</string>
     <string name="m_delete">Delete</string>

@@ -5,7 +5,7 @@
     <item android:id="@+id/m_undo" android:title="@string/m_undo" app:showAsAction="ifRoom|withText" />
     <item android:id="@+id/m_redo" android:title="@string/m_redo" app:showAsAction="ifRoom|withText" />
     <item android:id="@+id/m_find" android:title="@string/m_find" app:showAsAction="ifRoom|withText" />
-    <item android:id="@+id/m_panel" android:title="@string/m_panel" app:showAsAction="never" />
+    <item android:id="@+id/m_panel" android:title="@string/m_panel" app:showAsAction="ifRoom|withText" />
     <item android:id="@+id/m_save_as" android:title="@string/m_save_as" app:showAsAction="never" />
     <item android:id="@+id/m_info" android:title="@string/m_info" app:showAsAction="never" />
     <item android:id="@+id/m_rename" android:title="@string/m_rename" app:showAsAction="never" />

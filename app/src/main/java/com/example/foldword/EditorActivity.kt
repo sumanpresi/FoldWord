@@ -144,6 +144,10 @@ class EditorActivity : AppCompatActivity() {
         web = findViewById(R.id.editorWeb)
         setupEditor()
         setupFindBar()
+        findViewById<MaterialButton>(R.id.sideHide).setOnClickListener {
+            panelWanted = false
+            updatePanel(resources.configuration)
+        }
         updatePanel(resources.configuration)
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
@@ -199,7 +203,10 @@ class EditorActivity : AppCompatActivity() {
         updatePanel(newConfig)
     }
 
-    private var panelWanted = true
+    /** Whether the document list is shown on wide screens. Remembered between sessions. */
+    private var panelWanted: Boolean
+        get() = getSharedPreferences(Config.PREFS, MODE_PRIVATE).getBoolean("editor_panel", true)
+        set(value) = getSharedPreferences(Config.PREFS, MODE_PRIVATE).edit().putBoolean("editor_panel", value).apply()
 
     private fun updatePanel(config: Configuration) {
         val wide = config.screenWidthDp >= 720
@@ -207,6 +214,7 @@ class EditorActivity : AppCompatActivity() {
         findViewById<View>(R.id.sidePanel).visibility = if (show) View.VISIBLE else View.GONE
         findViewById<View>(R.id.sideDivider).visibility = if (show) View.VISIBLE else View.GONE
         if (show) fillSidePanel()
+        invalidateOptionsMenu()
     }
 
     // ------------------------------------------------------------------ editor (local WebView)
@@ -587,7 +595,8 @@ class EditorActivity : AppCompatActivity() {
         menu.findItem(R.id.m_rename)?.isEnabled = uri != null && canRename
         menu.findItem(R.id.m_delete)?.isEnabled = uri != null && canDelete
         menu.findItem(R.id.m_share)?.isEnabled = uri != null
-        menu.findItem(R.id.m_panel)?.isVisible = resources.configuration.screenWidthDp >= 720
+        // "Documents" appears on the top bar only when the list is hidden on the unfolded screen.
+        menu.findItem(R.id.m_panel)?.isVisible = resources.configuration.screenWidthDp >= 720 && !panelWanted
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -604,7 +613,7 @@ class EditorActivity : AppCompatActivity() {
             R.id.m_share -> share()
             R.id.m_upload -> upload()
             R.id.m_online -> confirmLeaveForOnline()
-            R.id.m_panel -> { panelWanted = !panelWanted; updatePanel(resources.configuration) }
+            R.id.m_panel -> { panelWanted = true; updatePanel(resources.configuration) }
             else -> return super.onOptionsItemSelected(item)
         }
         return true

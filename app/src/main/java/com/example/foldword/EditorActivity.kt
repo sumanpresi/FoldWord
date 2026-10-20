@@ -341,6 +341,7 @@ class EditorActivity : AppCompatActivity() {
         lastSaved = 0
         showBanner(when {
             lost.isNotEmpty() -> getString(R.string.banner_lost, lost.joinToString("\n• ", prefix = "• "))
+            !canWrite && location == "Phone media" -> getString(R.string.banner_read_only_media)
             !canWrite -> getString(R.string.banner_read_only)
             else -> null
         })
@@ -411,6 +412,10 @@ class EditorActivity : AppCompatActivity() {
 
     private fun save() {
         if (saving) return
+        if (!dirty && uri != null && lost.isEmpty() && canWrite && afterSave == null) {
+            Toast.makeText(this, R.string.nothing_to_save, Toast.LENGTH_SHORT).show()
+            return
+        }
         when (SavePolicy.decide(uri != null, format.canSave, lost, canWrite, replaceConfirmed)) {
             SavePolicy.Action.CHOOSE_LOCATION -> saveAs(format)
             SavePolicy.Action.SAVE_COPY_ONLY -> MaterialAlertDialogBuilder(this)

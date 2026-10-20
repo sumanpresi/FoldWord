@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/brand_blue"
+        android:theme="@style/ThemeOverlay.FoldWord.Toolbar"
         android:title="@string/web_title"
         app:titleTextColor="@color/white" />
 

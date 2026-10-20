@@ -25,11 +25,15 @@ class RecentStore(context: Context) {
         emptyList()
     }
 
-    fun add(doc: RecentDoc) = save(listOf(doc) + all().filter { it.uri != doc.uri })
+    /** Adds or moves a document to the top. The same file opened in different ways is listed once. */
+    fun add(doc: RecentDoc) = save(listOf(doc) + all().filter { !sameFile(it, doc) })
+
+    private fun sameFile(a: RecentDoc, b: RecentDoc) =
+        a.uri == b.uri || (a.name == b.name && a.location == b.location)
 
     fun remove(uri: String) = save(all().filter { it.uri != uri })
 
-    fun replace(oldUri: String, doc: RecentDoc) = save(listOf(doc) + all().filter { it.uri != oldUri && it.uri != doc.uri })
+    fun replace(oldUri: String, doc: RecentDoc) = save(listOf(doc) + all().filter { it.uri != oldUri && !sameFile(it, doc) })
 
     fun clear() = prefs.edit().remove(KEY).apply()
 

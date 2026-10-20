@@ -61,6 +61,8 @@
     <string name="status_words">%1$d words</string>
     <string name="banner_lost">This file contains things the offline editor can\'t keep. To protect your original, saving creates a copy. Not kept in the copy:\n%1$s</string>
     <string name="banner_read_only">This location doesn\'t allow changes. Use Save As to keep your edits.</string>
+    <string name="banner_read_only_media">Opened from Phone media, which only lets apps read files. Save a copy, or open the file with Browse phone (or Open file › your phone\'s storage) to edit it in place.</string>
+    <string name="nothing_to_save">No changes to save</string>
     <string name="banner_restored">Your unsaved changes were restored.</string>
     <string name="banner_restored_auto">Fold Word was closed in the background; your unsaved changes were brought back.</string>
     <string name="draft_found_title">Unsaved changes found</string>

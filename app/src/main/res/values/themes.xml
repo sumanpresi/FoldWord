@@ -7,6 +7,14 @@
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
     </style>
 
+    <!-- Blue title bars: white title, white action labels (Save, Undo...) and white menu icon. -->
+    <style name="ThemeOverlay.FoldWord.Toolbar" parent="ThemeOverlay.Material3.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/brand_tagline</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="actionMenuTextColor">@color/white</item>
+    </style>
+
     <!-- Reusable text and button styles for Fold Word screens. -->
     <style name="FW" />
     <style name="FW.Section">

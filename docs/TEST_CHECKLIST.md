@@ -1,83 +1,76 @@
-# Fold Word: test checklist
+# Fold Word 2.0: test checklist
 
-Tick each item on a real Galaxy Z Fold 8. Record the Android version and One UI version at the top.
+**Automated** items run on every GitHub build (see [CHECKS_REPORT.md](CHECKS_REPORT.md)).
+**Phone** items must be checked by hand on the Galaxy Z Fold 8. They can't be automated without an Android emulator.
 
-**Device:** ______________ **Android / One UI:** ______________ **Chrome version:** ______________ **Date:** ______
+Device: ______  One UI: ______  Chrome: ______  Build run #: ______  Date: ______
 
 ## A. Build and install
-- [ ] Gradle sync finishes with no errors in Android Studio.
-- [ ] Build > Build APK(s) succeeds. `app/build/outputs/apk/debug/app-debug.apk` exists.
-- [ ] The APK installs on the Fold 8 and the app opens.
-- [ ] The app name is "Fold Word" and the W icon shows in the app drawer.
+- [ ] Automated: editor tests pass, unit tests pass, APK builds, APK artifact uploaded.
+- [ ] Phone: the old Fold Word is uninstalled, the new APK installs, and the icon and name are "Fold Word".
 
-## B. Launch screen
-- [ ] Cover screen (folded): the layout is readable and both buttons are reachable with one thumb.
-- [ ] Unfolded: the layout uses the wider margins, nothing is stretched or cut off.
-- [ ] Rotating the phone keeps the layout correct.
-- [ ] The splash screen shows the blue W and no flicker on launch.
-- [ ] The privacy note is visible and readable.
+## B. Home screen and layouts
+- [ ] Unfolded: header on top; actions on the left; Recent documents on the right.
+- [ ] Cover screen: one column (actions, recent, online).
+- [ ] Fold and unfold on the home screen: the layout switches correctly.
+- [ ] Rotate in both states: nothing is cut off.
+- [ ] Settings › Display › Font size at maximum: text wraps and buttons stay usable.
+- [ ] Light mode and dark mode: all labels are readable.
+- [ ] Header chip shows **Online** with Wi-Fi, and **No internet** in Airplane mode (it updates without reopening).
 
-## C0. Full Word ribbon (one-time setup)
-- [ ] "Get the full Word ribbon" card shows on first launch.
-- [ ] "Open Word in Chrome" opens the full Chrome app (with tabs and address bar), not the in-app tab.
-- [ ] In Chrome: ⋮ > tick Desktop site. Word reloads with File, Home, Insert, Layout, References, Review, View.
-- [ ] Close Chrome, tap Open Word again: the full ribbon appears without ticking Desktop site again.
-- [ ] "Got it" hides the card, and it stays hidden after restarting Fold Word.
+## C. Offline documents (do these in Airplane mode)
+- [ ] New document › Word: type, bold, italic, underline, heading, bullets, numbering, a table › Save › choose folder › Saved.
+- [ ] Close the app completely (swipe it away) › reopen › Recent › document opens with all formatting.
+- [ ] Restart the phone › reopen the document › same content.
+- [ ] New document as .txt and .md: create, edit, save, reopen.
+- [ ] Open file › Downloads › open a .docx made in Microsoft Word.
+- [ ] Browse phone › choose a folder › open a subfolder › open a document › Back returns to the folder.
+- [ ] Offline documents › first time asks for a folder › later goes straight to it.
+- [ ] Browse › **New** creates a document directly in that folder and opens it.
+- [ ] PDF opens view-only, all pages scroll, and Share works.
+- [ ] Unsupported file (for example .doc) shows a clear message.
+- [ ] Automated: create, edit, save and reopen TXT/MD/DOCX; formatting round trip; encodings.
 
-## C1. One-tap home-screen access
-- [ ] "Add one-tap Word to home screen" shows Android's "Add to home screen" prompt; accepting adds a "Word" icon.
-- [ ] Tapping that icon opens Word in the Chrome app directly, with no Fold Word screen in between.
-- [ ] Long-press the Fold Word icon: "Word" and "OneDrive" shortcuts appear and each opens in Chrome.
-- [ ] Dragging a long-press shortcut to the home screen also gives one-tap access.
+## D. Saving safely
+- [ ] First Save on an existing file asks **Replace "name"?**; later saves in that session don't ask again.
+- [ ] Settings › Backups lists the previous version and can save it to the phone.
+- [ ] A .docx with a picture or header shows the yellow banner listing what isn't kept; **Save** only offers **Save a copy**, and the original is unchanged (check its size and date in My Files).
+- [ ] Save as › Plain text on a formatted document warns which formatting won't be stored.
+- [ ] Save as to the same folder and name: Android adds "(1)" and doesn't overwrite.
+- [ ] Rename and Delete each ask for confirmation, and the recent list updates.
+- [ ] Automated: overwrite policy, copy names never equal the original, atomic write, failed write keeps the original, low-storage detection.
 
-## C. Primary path: Open Word (browser)
-- [ ] "Open Word" opens https://word.cloud.microsoft/ in the Chrome app (falls back to an in-app Chrome tab if Chrome is missing).
-- [ ] Microsoft's sign-in page appears and works. Use a real test account you own. The app never asks for or stores the password.
-- [ ] After sign-in, you can open or create a document.
-- [ ] Typing, formatting, and inserting a table work in the document.
-- [ ] Changes save to OneDrive (check the "saved" status in Word, then reopen the file).
-- [ ] Your existing Microsoft session is still active the next time you tap "Open Word" (no need to sign in again).
-- [ ] Back closes the Custom Tab and returns to Fold Word.
+## E. Recovery
+- [ ] Type without saving › press Home › force-stop Fold Word in Settings › reopen › the draft appears under Recent as "Unsaved changes" › open it › text restored.
+- [ ] Open the same file again later › "Unsaved changes found" › Restore and Discard both work.
+- [ ] Back with unsaved changes asks Save / Keep as draft / Discard.
+- [ ] Fold and unfold **while typing in the editor**: the text, cursor and undo still work, and the document list appears or hides.
+- [ ] Turn on Developer options › "Don't keep activities", open a document, type, press Home, return: the changes are restored.
+- [ ] Automated: draft JSON round trip; damaged draft values are made safe.
 
-## D. Beta path: Sign-in check (beta)
-> Known limit: Microsoft shows "Word ran into a problem opening this document in a browser" here. That is expected; editing is only supported in Chrome.
-- [ ] The beta screen loads word.cloud.microsoft with the progress bar.
-- [ ] Sign-in works, or the failure is recorded below with the exact message and the page it stopped on.
-- [ ] Editing works and does not freeze.
-- [ ] Any page outside the allowlist (for example, an external link) opens in the browser, not in the app.
-- [ ] The Upload or Insert picture option opens the phone's file picker, and the chosen file uploads.
-- [ ] Download or export: blob links show the "saved in the browser" message. HTTPS downloads open in the browser.
-- [ ] Back goes to the previous Word page. At the first page it exits the screen.
-- [ ] "Edit in Chrome" is visible in the top bar and opens the current page in Chrome. Reload is in the ⋮ menu.
-- [ ] Airplane mode: the friendly error message appears and Reload recovers after reconnecting.
-- [ ] Fold and unfold while editing: the page does not reload, and typing is not lost.
-- [ ] Rotate while the menu is open: no crash.
+## F. Permissions and errors
+- [ ] In the folder picker, press Back without choosing: nothing happens and there's no crash.
+- [ ] Move or delete a recent file in My Files, then tap it in Recent: "moved, renamed or deleted" message with Remove from list.
+- [ ] Open an email attachment: it's read-only, so Save offers Save a copy.
+- [ ] Fill the storage nearly full, then Save: "storage is full" message, and the draft is kept.
 
-## B2. Fold layouts
-- [ ] Unfolded: the blue brand panel is on the left and the buttons are on the right.
-- [ ] Folded (cover screen): the brand panel is on top and the buttons are below.
-- [ ] Light mode (Settings > Display): all button labels are readable.
-- [ ] "Browse my OneDrive files" opens onedrive.live.com in Chrome, and opening a .docx there starts the Word editor.
+## G. Online mode
+- [ ] Open Microsoft Word Online opens Chrome at word.cloud.microsoft (Microsoft's own sign-in).
+- [ ] With Desktop site ticked in Chrome: the full ribbon appears (File, Home, Insert, Layout, References, Review, View).
+- [ ] Browse my OneDrive files opens onedrive.live.com in Chrome.
+- [ ] Airplane mode › Open Word Online shows **Internet needed** with Try again.
+- [ ] From the editor with unsaved changes › menu › Open Word Online asks to save first.
+- [ ] Upload to OneDrive explains that it makes a separate copy, and only then shows the share list.
+- [ ] One-tap home screen Word icon opens Word in Chrome (in Airplane mode it shows a message instead).
+- [ ] Settings › Sign-in check (beta) loads Microsoft sign-in; Edit in Chrome opens the full Chrome app.
+- [ ] After reconnecting: nothing was uploaded and no local file changed by itself.
 
-## E. Recent shortcut
-- [ ] After visiting Word in the beta screen, "Continue where you left off" appears on the launch screen.
-- [ ] The card shows only the path, with no query string or token-like text.
-- [ ] "Continue" opens the saved page in the browser.
-- [ ] "Forget" hides the card and clears the saved address. It stays hidden after restarting the app.
+## H. Privacy (automated, see report)
+- [ ] Only INTERNET and ACCESS_NETWORK_STATE permissions; no cleartext; backups off.
+- [ ] No password fields; no networking or upload code; Microsoft pages never scripted or read.
+- [ ] The editor page loads nothing from the network, and document text can't run scripts.
 
-## F. Security and privacy
-- [ ] The app asks for no permissions other than INTERNET (check App info > Permissions: none shown).
-- [ ] Opening a plain http:// link (for example, from a test page) is blocked or leaves the app. It does not load inside the WebView.
-- [ ] The app has no password fields of its own. Search the code: `grep -ri password app/src` should only find comments and strings about privacy.
-- [ ] Backups are off (`allowBackup="false"` in the manifest).
-- [ ] No keystore, password, or `.apk` file is committed to Git (`git status` is clean of these).
-- [ ] The release build is signed with your own keystore, which is stored outside the repository.
-
-## G. Regression after updates
-- [ ] Repeat sections C and D after every Chrome update, Word web change, or Fold Word version change.
-- [ ] Note any new Microsoft host needed for sign-in, then add it to `Config.kt` only after review.
-
-## Beta failures to record
-| Step | Exact message or behaviour | Page/host (no tokens) | Browser works? |
-|------|----------------------------|-----------------------|----------------|
-|      |                            |                       |                |
+## Failures found
+| Section | What happened | Screenshot? |
+|---|---|---|
+| | | |

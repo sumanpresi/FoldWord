@@ -1,55 +1,62 @@
 # Fold Word
 
-A small Android launcher for **Microsoft Word for the web** (`https://word.cloud.microsoft/`), made for the Samsung Galaxy Z Fold 8.
+A document app for the **Samsung Galaxy Z Fold 8** with two clearly separate modes:
 
-## What it does
-- **Open Word:** opens Microsoft's official site in the Chrome app. This is the recommended way to edit. Turn on Chrome's *Desktop site* once for Word (⋮ > Desktop site) to get Word's full ribbon editor; Chrome remembers it. Microsoft handles sign-in, subscriptions, the editor, and OneDrive saving.
-- **Browse my OneDrive files:** opens your OneDrive file list in Chrome.
-- **Sign-in check (beta):** loads Word inside the app. Sign-in works, but Microsoft blocks document editing in embedded browsers, so editing is only supported through Open Word.
-- **Continue where you left off:** remembers the last Word page visited in the beta screen (scheme, host and path only). You can forget it at any time.
+| | **Offline documents** | **Microsoft Word Online** |
+|---|---|---|
+| Internet needed | No | Yes |
+| Microsoft account needed | No | Yes (Microsoft's own sign-in) |
+| Where files live | Folders on your phone that you choose | Your OneDrive |
+| Editor | Fold Word's own editor, inside the app | Microsoft's Word for the web, in Chrome |
+| Formats | .docx, .txt, .md (edit) · .pdf (view only) | Everything Word for the web supports |
 
-## What it does not do
-- It does not ask for, store, or see your Microsoft password.
-- It does not recreate Word's editor or change Microsoft's pages.
-- It does not read or store Microsoft cookies or tokens.
-- It has no permissions except internet access.
+Fold Word is **not** made by Microsoft and is not a copy of Microsoft Word. The offline editor covers everyday writing (see [what it supports](docs/FORMATS_AND_LIMITATIONS.md)). For full Word features, use Word Online.
 
-## Requirements
-- Android Studio (recent stable version, for example Koala or newer). It includes the Java (JDK 17) that this project uses.
-- A Galaxy Z Fold 8 (or any Android 8.0+ phone) with USB debugging enabled.
-- A Microsoft account with access to Word for the web.
+## What you can do
 
-## Build it (beginner steps)
+**Home screen**
+- **New document**: Word (.docx), plain text (.txt) or Markdown (.md). Works offline.
+- **Open file**: pick any supported file with Android's file picker, including Downloads.
+- **Browse phone**: choose a folder and browse its documents and subfolders.
+- **Offline documents**: your Fold Word folder (you pick it once, for example *Documents*).
+- **Recent documents**: files you opened, plus any **unsaved drafts**.
+- **Open Microsoft Word Online** and **Browse my OneDrive files**: open in Chrome.
+- **Settings**: folder, privacy, backups, drafts, and the Word Online extras.
 
-1. **Install Android Studio** from developer.android.com/studio and open it once. Accept the default SDK installation, which includes Android SDK 35.
-2. **Open the project.** Choose *File > Open* and select the `FoldWord` folder (the one containing `settings.gradle.kts`).
-3. **Let Gradle sync.** Wait for the progress bar at the bottom to finish. The first sync downloads several hundred MB.
-4. **Gradle wrapper (only if asked).** This project does not include the wrapper binary. If Android Studio reports a missing `gradlew`, install Gradle 8.9 and run this once in the project folder:
-   ```
-   gradle wrapper --gradle-version 8.9
-   ```
-5. **Run on your phone.** On the Fold 8, go to *Settings > About phone > Software information* and tap *Build number* seven times. Then go to *Developer options* and turn on *USB debugging*. Connect the phone with a USB cable, accept the prompt on the phone, and press the green ▶ button in Android Studio.
-6. **Build an APK file to share or test later.** Choose *Build > Build App Bundle(s) / APK(s) > Build APK(s)*. The result is at `app/build/outputs/apk/debug/app-debug.apk`. This is a debug build for personal testing only.
-7. **Work through `docs/TEST_CHECKLIST.md`** on the device before you rely on the app.
+**Offline editor**
+- Title, Heading 1–3, Quote, **bold**, *italic*, underline, strikethrough, font size.
+- Left, centre, right and justified alignment; bullet and numbered lists with indent.
+- Tables: insert, add or delete rows and columns.
+- Undo and redo, Find (with match count), word count, document information.
+- **Save**, **Save as** (choose .docx, .txt or .md and a location), **Rename**, **Delete** (with confirmation).
+- **Share a copy** and **Upload to OneDrive** (always your choice; explained before it happens).
+- Status bar: *Offline · no internet needed* and *Saved* / *Unsaved changes*.
+- Unfolded screen: the document list on the left and the editor on the right. Cover screen: editor only.
+- Bluetooth keyboard: Ctrl+S save, Ctrl+F find, Ctrl+B/I/U, Ctrl+Z/Y.
 
-If the build fails, copy the first red error from the *Build* panel and check the versions in `build.gradle.kts` and `app/build.gradle.kts`.
+**Your work is protected**
+- Fold Word never replaces an original without asking first, and keeps a **backup** of the previous version.
+- A file with content the editor can't keep (for example pictures) is **never overwritten**: you save a copy instead, and Fold Word lists exactly what the copy won't include.
+- Unsaved changes are kept in a **recovery draft** every 20 seconds and when you leave the app.
+- Nothing is uploaded automatically. See [Security and privacy](docs/SECURITY_PRIVACY.md).
 
-## Release builds
-Release builds must be signed with your own keystore. Create it with *Build > Generate Signed App Bundle / APK* in Android Studio. Keep the keystore file and its passwords **outside** this folder and never commit them. The `.gitignore` already blocks `*.jks`, `*.keystore`, and `*.apk`.
+## Getting the app onto your phone
 
-## Publishing caveats
-Microsoft's terms restrict modifying or wrapping its service. This app only opens Microsoft's official page and does not modify it. It is not affiliated with Microsoft and does not use Microsoft logos. Check Microsoft's current terms before publishing to the Play Store.
+You don't need a computer. GitHub builds the app in the cloud. Step-by-step instructions: **[docs/INSTALL_FOLD8.md](docs/INSTALL_FOLD8.md)**.
 
-## Project layout
-```
-settings.gradle.kts, build.gradle.kts, gradle.properties   build configuration
-app/build.gradle.kts                                       app dependencies and SDK versions
-app/src/main/AndroidManifest.xml                           permissions and activities
-app/src/main/java/com/example/foldword/
-  Config.kt            Word URL, host allowlist, URL sanitising
-  Util.kt              opens links in a Custom Tab
-  MainActivity.kt      launch screen
-  WordWebActivity.kt   beta WebView
-app/src/main/res/      layouts, strings, colours, icon, themes, network security
-docs/TEST_CHECKLIST.md device test checklist
-```
+## Documents
+
+- [Install guide for the Galaxy Z Fold 8](docs/INSTALL_FOLD8.md)
+- [Supported formats and known limitations](docs/FORMATS_AND_LIMITATIONS.md)
+- [Security and privacy summary](docs/SECURITY_PRIVACY.md)
+- [Test checklist](docs/TEST_CHECKLIST.md)
+- [Report of checks actually run](docs/CHECKS_REPORT.md)
+
+## For developers
+
+- Package: `com.example.foldword`, minSdk 26, targetSdk 35, Kotlin 2.0.21, AGP 8.7.2, Gradle 8.9, Java 17.
+- Build: `gradle testDebugUnitTest assembleDebug` (the GitHub workflow installs Gradle 8.9; no wrapper is committed).
+- Offline engine (plain Java, no dependencies): `app/src/main/java/com/example/foldword/doc/`.
+- Editor page: `app/src/main/assets/editor/` (tests in `tools/editor-tests`, run with `npm ci && npm test`).
+- Unit tests: `app/src/test/java/com/example/foldword/doc/`.
+- Workflow: `.github/workflows/build-android.yml` (editor tests, unit tests, APK, lint, reports).
